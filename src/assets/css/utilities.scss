@@ -1,0 +1,22 @@
+.h100 {
+  height: 100vh !important;
+}
+.color-white {
+  color: var(--color-white);
+}
+.mat-form-field {
+  display: block !important;
+}
+.mat-snack-bar-container {
+  color: var(--color-white) !important;
+  letter-spacing: 0.8px;
+}
+.error-toast {
+  background-color: #f44336;
+}
+.success-toast {
+  background-color: #4caf50;
+}
+.mt-sm {
+  margin-top: 3rem;
+}
