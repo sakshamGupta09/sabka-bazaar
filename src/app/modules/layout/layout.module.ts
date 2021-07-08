@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './components/header/header.component';
 import { LayoutComponent } from './components/layout/layout.component';
 
@@ -37,6 +38,6 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [HeaderComponent, LayoutComponent],
-  imports: [CommonModule, RouterModule.forChild(appRoutes)],
+  imports: [CommonModule, RouterModule.forChild(appRoutes), MatIconModule],
 })
 export class LayoutModule {}

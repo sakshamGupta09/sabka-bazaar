@@ -1,3 +1,5 @@
+@import "src/assets/css/breakpoints";
+
 .header {
   position: fixed;
   top: 0;
@@ -6,11 +8,36 @@
   height: var(--header-height);
   background-color: var(--color-header);
   box-shadow: var(--shadow);
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding-left: 1rem;
+
+  &__left {
+    nav {
+      margin-left: 4rem;
+    }
+  }
 
   &__links {
-    font-size: 1.2rem;
     color: var(--default-text-color);
-    font-weight: 500;
+    padding: 10px;
     text-decoration: none;
+
+    &--active {
+      background-color: var(--color-grey);
+    }
+  }
+
+  &__logo {
+    max-height: 83px;
+
+    @media only screen and (max-width: $mobile) {
+      width: 85px;
+    }
+  }
+
+  &__cart {
+    padding: 10px 20px;
+    background-color: var(--color-grey);
   }
 }

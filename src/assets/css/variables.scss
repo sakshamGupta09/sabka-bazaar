@@ -1,3 +1,4 @@
+@import "src/assets/css/breakpoints";
 :root {
   --color-theme: #ff5722;
   --color-white: #fff;
@@ -9,4 +10,10 @@
   --shadow: 0 2px 12px 0 rgb(0 0 0 / 6%);
   --underline: 1px solid rgba(224, 224, 224, 1);
   --default-text-color: #171725;
+  --color-grey: #f0f0f0;
+}
+@media screen and (max-width: $mobile) {
+  :root {
+    --header-height: 52px;
+  }
 }
