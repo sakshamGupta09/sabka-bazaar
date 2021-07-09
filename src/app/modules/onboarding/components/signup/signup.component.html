@@ -1,1 +1,182 @@
-<p>signup works!</p>
+<div class="container mb-4">
+  <div class="row">
+    <div class="col-sm-5 mt-2">
+      <div aria-label="Login Info">
+        <h4 class="login__heading">Signup</h4>
+        <p class="mt-4 login__text">
+          We don not share your personal details with anyone.
+        </p>
+      </div>
+    </div>
+    <div class="col-sm-4 mt-2">
+      <form
+        [formGroup]="signupForm"
+        (ngSubmit)="onSubmit()"
+        name="signup-form"
+        autocomplete="off"
+        novalidate
+      >
+        <div aria-label="firstname">
+          <mat-form-field color="accent">
+            <mat-label>First Name</mat-label>
+            <input
+              type="text"
+              name="firstname"
+              matInput
+              placeholder="First Name"
+              formControlName="firstName"
+              autocomplete="first-name"
+            />
+            <mat-error
+              *ngIf="
+                signupForm.get('firstName').invalid &&
+                signupForm.get('firstName').touched &&
+                signupForm.get('firstName').dirty
+              "
+            >
+              <ng-container *ngIf="signupForm.get('firstName').errors.required"
+                >This field is required.</ng-container
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div aria-label="lastname" class="mt-2">
+          <mat-form-field color="accent">
+            <mat-label>Last Name</mat-label>
+            <input
+              type="text"
+              name="lastname"
+              matInput
+              placeholder="Last Name"
+              formControlName="lastName"
+              autocomplete="last-name"
+            />
+            <mat-error
+              *ngIf="
+                signupForm.get('lastName').invalid &&
+                signupForm.get('lastName').touched &&
+                signupForm.get('lastName').dirty
+              "
+            >
+              <ng-container *ngIf="signupForm.get('lastName').errors.required"
+                >This field is required.</ng-container
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div aria-label="email" class="mt-2">
+          <mat-form-field color="accent">
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              name="email"
+              matInput
+              placeholder="Email"
+              formControlName="email"
+              autocomplete="current-email"
+            />
+            <mat-error
+              *ngIf="
+                signupForm.get('email').invalid &&
+                signupForm.get('email').touched &&
+                signupForm.get('email').dirty
+              "
+            >
+              <ng-container *ngIf="signupForm.get('email').errors.required"
+                >This field is required.</ng-container
+              >
+              <ng-container *ngIf="signupForm.get('email').errors.email"
+                >Please enter a valid email.</ng-container
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div formGroupName="auth">
+          <div aria-label="password" class="mt-2">
+            <mat-form-field color="accent">
+              <mat-label>Password</mat-label>
+              <input
+                type="password"
+                name="password"
+                matInput
+                placeholder="Password"
+                formControlName="password"
+                autocomplete="current-password"
+              />
+              <mat-error
+                *ngIf="
+                  signupForm.get('auth.password').invalid &&
+                  signupForm.get('auth.password').touched &&
+                  signupForm.get('auth.password').dirty
+                "
+              >
+                <ng-container
+                  *ngIf="signupForm.get('auth.password').errors.required"
+                  >This field is required.</ng-container
+                >
+                <ng-container
+                  *ngIf="signupForm.get('auth.password').errors.pattern"
+                  >Password should contain at least 6 digits, 1number and 1
+                  letter without spaces.</ng-container
+                >
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div aria-label="confirm password" class="mt-2">
+            <mat-form-field color="accent">
+              <mat-label>Confirm Password</mat-label>
+              <input
+                type="password"
+                name="confirm-password"
+                matInput
+                placeholder="Confirm Password"
+                formControlName="confirmPassword"
+                autocomplete="off"
+              />
+              <mat-error
+                *ngIf="
+                  signupForm.get('auth.confirmPassword').invalid &&
+                  signupForm.get('auth.confirmPassword').touched &&
+                  signupForm.get('auth.confirmPassword').dirty
+                "
+              >
+                <ng-container
+                  *ngIf="signupForm.get('auth.confirmPassword').errors.required"
+                  >This field is required.</ng-container
+                >
+                <ng-container
+                  *ngIf="signupForm.get('auth.confirmPassword').errors.pattern"
+                  >Password should contain at least 6 digits, 1number and 1
+                  letter without spaces.</ng-container
+                >
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <mat-error
+            *ngIf="
+              signupForm.get('auth').invalid &&
+              signupForm.get('auth').touched &&
+              signupForm.get('auth').dirty
+            "
+          >
+            <ng-container *ngIf="signupForm.get('auth').errors.notSame"
+              >Passwords do not match</ng-container
+            >
+          </mat-error>
+        </div>
+        <div class="mt-4">
+          <button
+            type="submit"
+            class="w-100"
+            aria-label="submit form"
+            mat-raised-button
+            color="primary"
+          >
+            Signup
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
