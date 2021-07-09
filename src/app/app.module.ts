@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -19,6 +20,7 @@ import { InterceptorService } from './interceptors/interceptor.service';
       registrationStrategy: 'registerWhenStable:30000',
     }),
     AppRoutingModule,
+    MatSnackBarModule,
   ],
   providers: [
     {
