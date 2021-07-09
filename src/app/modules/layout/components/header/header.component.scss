@@ -11,6 +11,8 @@
   font-size: 1.2rem;
   font-weight: 500;
   padding-left: 1rem;
+  z-index: 3;
+  border-bottom: var(--underline);
 
   &__left {
     nav {

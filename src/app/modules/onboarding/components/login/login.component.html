@@ -1,1 +1,85 @@
-<p>login works!</p>
+<div class="container mb-4">
+  <div class="row">
+    <div class="col-sm-5 mt-2">
+      <div aria-label="Login Info">
+        <h4 class="login__heading">Login</h4>
+        <p class="mt-4 login__text">
+          Get access to your Orders, Wishlists and Recommendations.
+        </p>
+      </div>
+    </div>
+    <div class="col-sm-4 mt-2">
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+        name="login-form"
+        autocomplete="off"
+        novalidate
+      >
+        <div aria-label="email">
+          <mat-form-field color="accent">
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              name="email"
+              matInput
+              placeholder="Email"
+              formControlName="email"
+              autocomplete="current-email"
+            />
+            <mat-error
+              *ngIf="
+                loginForm.get('email').invalid &&
+                loginForm.get('email').touched &&
+                loginForm.get('email').dirty
+              "
+            >
+              <ng-container *ngIf="loginForm.get('email').errors.required"
+                >This field is required.</ng-container
+              >
+              <ng-container *ngIf="loginForm.get('email').errors.email"
+                >Please enter a valid email.</ng-container
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div aria-label="password" class="mt-2">
+          <mat-form-field color="accent">
+            <mat-label>Password</mat-label>
+            <input
+              type="password"
+              name="password"
+              matInput
+              placeholder="Password"
+              formControlName="password"
+              autocomplete="current-password"
+            />
+            <mat-error
+              *ngIf="
+                loginForm.get('password').invalid &&
+                loginForm.get('password').touched &&
+                loginForm.get('password').dirty
+              "
+            >
+              <ng-container *ngIf="loginForm.get('password').errors.required"
+                >This field is required.</ng-container
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="mt-4">
+          <button
+            type="submit"
+            class="w-100"
+            aria-label="submit form"
+            mat-raised-button
+            color="primary"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
