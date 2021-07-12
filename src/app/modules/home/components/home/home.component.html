@@ -1,1 +1,7 @@
-<p>home works!</p>
+<div class="container">
+  <app-banners [banners]="banners" *ngIf="banners.length > 0"></app-banners>
+  <app-categories
+    [categories]="categories"
+    *ngIf="categories.length > 0"
+  ></app-categories>
+</div>

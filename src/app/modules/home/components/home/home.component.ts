@@ -4,6 +4,7 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
+import { IBanner, ICategory } from '../../model/model';
 import { HomeService } from '../../services/home.service';
 
 @Component({
@@ -13,6 +14,29 @@ import { HomeService } from '../../services/home.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
+  banners: IBanner[] = [];
+  categories: ICategory[] = [];
+
   constructor(private service: HomeService, private cdRef: ChangeDetectorRef) {}
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+    this.getBanners();
+    this.getCategories();
+  }
+
+  getBanners(): void {
+    this.service.getBanners().subscribe((res) => {
+      this.banners = res.map((el) => ({ ...el, path: el.bannerImageUrl }));
+      this.detectChanges();
+    });
+  }
+  getCategories(): void {
+    this.service.getCategories().subscribe((res) => {
+      this.categories = res.filter((el) => el.enabled);
+      this.detectChanges();
+    });
+  }
+  detectChanges(): void {
+    this.cdRef.detectChanges();
+  }
 }

@@ -1,0 +1,10 @@
+.category {
+  background-color: var(--color-white);
+  padding: 1rem 0;
+  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.2);
+
+  &__image {
+    object-fit: contain;
+    max-height: 200px;
+  }
+}

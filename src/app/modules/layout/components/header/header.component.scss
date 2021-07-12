@@ -11,7 +11,7 @@
   font-size: 1.2rem;
   font-weight: 500;
   padding-left: 1rem;
-  z-index: 3;
+  z-index: 100001;
   border-bottom: var(--underline);
 
   &__left {
@@ -41,5 +41,6 @@
   &__cart {
     padding: 10px 20px;
     background-color: var(--color-grey);
+    cursor: pointer;
   }
 }
