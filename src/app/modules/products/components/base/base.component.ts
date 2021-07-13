@@ -42,9 +42,11 @@ export class BaseComponent implements OnInit {
   }
   getProducts(): void {
     this.service.getProducts().subscribe((res) => {
-      this.products = res;
+      this.products = res.map((el) => ({ ...el, quantity: 0 }));
       if (this.categoryId) {
-        this.products = res.filter((el) => el.category === this.categoryId);
+        this.products = this.products.filter(
+          (el) => el.category === this.categoryId
+        );
       }
       this.detectChanges();
     });

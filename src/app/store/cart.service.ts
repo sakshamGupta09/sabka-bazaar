@@ -18,8 +18,24 @@ export class CartService {
   getCart(): IProduct[] {
     return this.cart;
   }
+  addToCart(product: IProduct) {
+    let cart = [...this.cart];
+    product.quantity = product.quantity + 1;
+    if (cart.length == 0) {
+      cart.push(product);
+    } else {
+      let index = cart.findIndex((el) => el.id == product.id);
+      if (index > -1) {
+        cart[index] = product;
+      } else {
+        cart.push(product);
+      }
+    }
+    this.updateCart(cart);
+  }
   updateCart(cart): void {
     this.cart = cart;
+    localStorage.setItem('cart', JSON.stringify(this.cart));
   }
   notifyCartStatus(): void {
     this.changeNotifier$.next('cart contents updated');
