@@ -10,12 +10,12 @@ import { IProduct } from 'src/app/models/product';
 import { ProductsService } from '../../services/products.service';
 
 @Component({
-  selector: 'app-base',
-  templateUrl: './base.component.html',
-  styleUrls: ['./base.component.scss'],
+  selector: 'app-catalogue',
+  templateUrl: './catalogue.component.html',
+  styleUrls: ['./catalogue.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BaseComponent implements OnInit {
+export class CatalogueComponent implements OnInit {
   products: IProduct[];
   categories: ICategory[];
   categoryId: string;
@@ -42,7 +42,7 @@ export class BaseComponent implements OnInit {
   }
   getProducts(): void {
     this.service.getProducts().subscribe((res) => {
-      this.products = res.map((el) => ({ ...el, quantity: 0 }));
+      this.products = res;
       if (this.categoryId) {
         this.products = this.products.filter(
           (el) => el.category === this.categoryId

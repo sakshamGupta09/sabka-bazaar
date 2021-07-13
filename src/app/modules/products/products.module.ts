@@ -4,13 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { ProductsComponent } from './components/products/products.component';
 import { CategoriesComponent } from './components/categories/categories.component';
-import { BaseComponent } from './components/base/base.component';
+import { CatalogueComponent } from './components/catalogue/catalogue.component';
 import { ProductsService } from './services/products.service';
 
 const routes: Routes = [
   {
     path: '',
-    component: BaseComponent,
+    component: CatalogueComponent,
   },
   {
     path: '**',
@@ -18,7 +18,7 @@ const routes: Routes = [
   },
 ];
 @NgModule({
-  declarations: [ProductsComponent, CategoriesComponent, BaseComponent],
+  declarations: [ProductsComponent, CategoriesComponent, CatalogueComponent],
   imports: [CommonModule, RouterModule.forChild(routes), MatButtonModule],
   providers: [ProductsService],
 })

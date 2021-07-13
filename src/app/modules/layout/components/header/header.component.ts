@@ -8,6 +8,7 @@ import {
 import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/models/user';
 import { AuthService } from 'src/app/store/auth.service';
+import { CartService } from 'src/app/store/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -17,11 +18,18 @@ import { AuthService } from 'src/app/store/auth.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   private authSubx: Subscription;
+  private cartSubx: Subscription;
   currentUser: IUser;
-  constructor(public auth: AuthService, private cdref: ChangeDetectorRef) {}
+  cartCount: number = 0;
+  constructor(
+    public auth: AuthService,
+    private cartService: CartService,
+    private cdref: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.authStateListener();
+    this.cartStateListener();
   }
   authStateListener(): void {
     this.authSubx = this.auth.currentUser.subscribe((user) => {
@@ -30,10 +38,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }
     });
   }
+  cartStateListener(): void {
+    this.authSubx = this.cartService.cartChange.subscribe((count) => {
+      this.cartCount = count;
+      this.detectChanges();
+    });
+  }
   detectChanges(): void {
     this.cdref.detectChanges();
   }
   ngOnDestroy() {
     this.authSubx.unsubscribe();
+    this.cartSubx.unsubscribe();
   }
 }

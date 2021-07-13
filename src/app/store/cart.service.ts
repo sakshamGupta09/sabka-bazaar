@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IProduct } from '../models/product';
 
 @Injectable({
@@ -7,12 +7,14 @@ import { IProduct } from '../models/product';
 })
 export class CartService {
   private cart: IProduct[];
-  private changeNotifier$: Subject<any> = new Subject<any>();
-  public cartChange: Observable<any> = this.changeNotifier$.asObservable();
+  private changeNotifier$: BehaviorSubject<number>;
+  public cartChange: Observable<number>;
 
   constructor() {
     let sessionData = JSON.parse(localStorage.getItem('cart')) || [];
     this.cart = sessionData;
+    this.changeNotifier$ = new BehaviorSubject(this.cart.length);
+    this.cartChange = this.changeNotifier$.asObservable();
   }
 
   getCart(): IProduct[] {
@@ -20,14 +22,16 @@ export class CartService {
   }
   addToCart(product: IProduct) {
     let cart = [...this.cart];
-    product.quantity = product.quantity + 1;
     if (cart.length == 0) {
+      product.quantity = 1;
       cart.push(product);
     } else {
       let index = cart.findIndex((el) => el.id == product.id);
       if (index > -1) {
+        product.quantity = cart[index].quantity + 1;
         cart[index] = product;
       } else {
+        product.quantity = 1;
         cart.push(product);
       }
     }
@@ -36,8 +40,9 @@ export class CartService {
   updateCart(cart): void {
     this.cart = cart;
     localStorage.setItem('cart', JSON.stringify(this.cart));
+    this.notifyCartStatus();
   }
   notifyCartStatus(): void {
-    this.changeNotifier$.next('cart contents updated');
+    this.changeNotifier$.next(this.cart.length);
   }
 }
