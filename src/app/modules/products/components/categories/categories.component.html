@@ -1,1 +1,10 @@
-<p>categories works!</p>
+<section class="categories__sm">
+  <ul class="list-group">
+    <li
+      class="list-group-item category"
+      *ngFor="let row of categories; let i = index; trackBy: categoriesTracker"
+    >
+      {{ row.name }}
+    </li>
+  </ul>
+</section>

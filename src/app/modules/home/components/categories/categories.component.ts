@@ -4,7 +4,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { ICategory } from '../../model/model';
+import { ICategory } from 'src/app/models/category';
 
 @Component({
   selector: 'app-categories',

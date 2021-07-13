@@ -4,7 +4,8 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { IBanner, ICategory } from '../../model/model';
+import { ICategory } from 'src/app/models/category';
+import { IBanner } from '../../model/model';
 import { HomeService } from '../../services/home.service';
 
 @Component({

@@ -32,18 +32,20 @@
     </div>
     <div class="header__right d-flex flex-column" aria-label="Right Navigation">
       <nav class="d-none d-sm-flex flex-grow-1">
-        <a
-          [routerLink]="['/app/onboarding/login']"
-          class="header__links"
-          aria-label="Go To Home Page"
-          >SignIn</a
-        >
-        <a
-          [routerLink]="['/app/onboarding/signup']"
-          class="header__links"
-          aria-label="Go To Products Page"
-          >Register</a
-        >
+        <ng-container *ngIf="!currentUser">
+          <a
+            [routerLink]="['/app/onboarding/login']"
+            class="header__links"
+            aria-label="Go To Home Page"
+            >SignIn</a
+          >
+          <a
+            [routerLink]="['/app/onboarding/signup']"
+            class="header__links"
+            aria-label="Go To Products Page"
+            >Register</a
+          >
+        </ng-container>
       </nav>
       <div
         class="
@@ -53,6 +55,7 @@
           align-items-center
           flex-grow-1
         "
+        [routerLink]="['/app/checkout']"
         aria-label="cart"
       >
         <mat-icon aria-hidden="true" color="primary">shopping_cart</mat-icon>
