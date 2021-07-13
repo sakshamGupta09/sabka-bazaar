@@ -1,10 +1,26 @@
-<section class="categories__sm">
+<section class="categories__sm d-none d-sm-block">
   <ul class="list-group">
     <li
-      class="list-group-item category"
       *ngFor="let row of categories; let i = index; trackBy: categoriesTracker"
+      class="list-group-item category"
+      [class.category--active]="row.id == currentCategoryId"
+      (click)="onCategorySelect(row.id)"
     >
       {{ row.name }}
     </li>
   </ul>
+</section>
+<section class="categories__xs d-block d-sm-none">
+  <select name="select-category" (change)="categoryChangeHandler($event)">
+    <option
+      *ngFor="
+        let option of categories;
+        let i = index;
+        trackBy: categoriesTracker
+      "
+      [value]="option.id"
+    >
+      {{ option.name }}
+    </option>
+  </select>
 </section>

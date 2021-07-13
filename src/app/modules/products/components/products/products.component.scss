@@ -1,0 +1,25 @@
+.product {
+  box-shadow: var(--shadow);
+  border-bottom: 1px dashed var(--color-theme);
+  padding: 10px;
+  overflow: hidden;
+
+  &__title {
+    min-height: 56px;
+  }
+  &__img {
+    height: 40vh;
+    object-fit: contain;
+  }
+  &__description {
+    padding: 5px;
+    background-color: var(--color-grey);
+  }
+}
+.ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

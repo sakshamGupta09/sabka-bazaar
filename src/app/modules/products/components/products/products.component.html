@@ -1,1 +1,34 @@
-<p>products works!</p>
+<section aria-label="Products section">
+  <div class="row">
+    <div
+      class="col-md-6 col-lg-4"
+      *ngFor="let product of products; let i = index; trackBy: productTracker"
+    >
+      <div class="product mt-2" aria-label="product view">
+        <h5 class="product__title">{{ product.name }}</h5>
+        <img
+          [src]="product.imageURL"
+          [alt]="product.description"
+          class="product__img"
+          width="100%"
+          loading="lazy"
+        />
+        <p class="product__description ellipsis">{{ product.description }}</p>
+        <div class="d-flex align-items-center mt-2">
+          <p class="product__price flex-grow-1 mb-0">
+            MRP Rs {{ product.price }}
+          </p>
+          <button
+            type="button"
+            class="flex-grow-1"
+            aria-label="add product to cart"
+            mat-raised-button
+            color="primary"
+          >
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

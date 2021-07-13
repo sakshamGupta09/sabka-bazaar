@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   Input,
   OnInit,
@@ -17,4 +18,7 @@ export class ProductsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+  productTracker(index: number, row: IProduct): string {
+    return row.id;
+  }
 }

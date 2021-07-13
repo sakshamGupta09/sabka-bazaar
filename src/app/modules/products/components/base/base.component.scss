@@ -1,0 +1,11 @@
+@import "src/assets/css/breakpoints";
+.products {
+  &__content {
+    @media only screen and (min-width: $mobile) {
+      position: sticky;
+      height: calc(100vh - 200px);
+      top: 130px;
+      background-color: var(--color-grey);
+    }
+  }
+}

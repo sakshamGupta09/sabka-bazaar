@@ -49,6 +49,10 @@ export class BaseComponent implements OnInit {
       this.detectChanges();
     });
   }
+  categoryChangeHandler($event: string): void {
+    this.categoryId = $event;
+    this.getProducts();
+  }
   detectChanges(): void {
     this.cdref.detectChanges();
   }

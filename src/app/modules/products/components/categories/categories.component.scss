@@ -1,13 +1,12 @@
 .categories {
   &__sm {
-    height: calc(100vh - 185px);
     background-color: var(--color-grey);
   }
 }
 .category {
   transition: all 0.2s ease-in-out;
-  &:hover {
+  cursor: pointer;
+  &--active {
     color: var(--color-theme);
-    cursor: pointer;
   }
 }
