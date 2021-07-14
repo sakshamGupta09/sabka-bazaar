@@ -8,4 +8,5 @@ export interface IProduct {
   sku: string;
   stock: number;
   quantity: number;
+  totalPrice: number;
 }

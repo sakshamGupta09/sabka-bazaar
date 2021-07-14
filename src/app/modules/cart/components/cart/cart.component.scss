@@ -1,0 +1,50 @@
+@import "src/assets/css/breakpoints";
+
+.cart {
+  &__title {
+    padding: 1rem;
+    box-shadow: var(--shadow);
+  }
+}
+.product {
+  padding: 1rem;
+  box-shadow: var(--shadow);
+
+  &__image {
+    max-height: 20vh;
+    object-fit: scale-down;
+    @media only screen and (max-width: $mobile) {
+      display: none;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+    margin: 0 10px;
+    color: var(--color-white);
+    background-color: var(--color-theme);
+    border-radius: 4px;
+    height: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+.empty-cart {
+  height: calc(100vh - 200px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkout {
+  padding: 1rem;
+  box-shadow: var(--shadow);
+}
+.subtotal {
+  background-color: var(--color-theme);
+  color: var(--color-white);
+  border-radius: 4px;
+  cursor: pointer;
+}

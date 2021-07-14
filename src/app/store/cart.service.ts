@@ -37,6 +37,32 @@ export class CartService {
     }
     this.updateCart(cart);
   }
+  increaseQuantity(id: string): void {
+    let cart = [...this.cart];
+    let index = cart.findIndex((el) => el.id === id);
+    let product = { ...cart[index] };
+    product.quantity = product.quantity + 1;
+    cart[index] = product;
+    this.updateCart(cart);
+  }
+  decreaseQuantity(id: string): void {
+    let cart = [...this.cart];
+    let index = cart.findIndex((el) => el.id === id);
+    let product = { ...cart[index] };
+    if (product.quantity === 1) {
+      cart.splice(index, 1);
+    } else {
+      product.quantity = product.quantity - 1;
+      cart[index] = product;
+    }
+    this.updateCart(cart);
+  }
+  calculateSubtotal(): number {
+    return this.cart.reduce(
+      (prev, curr) => prev + curr.price * curr.quantity,
+      0
+    );
+  }
   updateCart(cart): void {
     this.cart = cart;
     localStorage.setItem('cart', JSON.stringify(this.cart));

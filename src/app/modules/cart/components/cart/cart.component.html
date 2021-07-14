@@ -1,1 +1,72 @@
-<p>cart works!</p>
+<div class="container-sm" [hidden]="cart?.length == 0">
+  <div class="cart__title">
+    <h5>My Cart ( {{ cart.length }} items )</h5>
+  </div>
+  <div class="cart__content mt-4">
+    <div
+      class="product mt-2"
+      *ngFor="let product of cart; trackBy: productTracker"
+    >
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="product__imgbox">
+          <img
+            class="product__image"
+            width="100%"
+            [src]="product.imageURL"
+            [alt]="product.description"
+          />
+        </div>
+        <div class="flex-grow-1">
+          <h5 class="product__name">{{ product.name }}</h5>
+          <div
+            class="d-flex align-items-center mt-2"
+            aria-label="change product quantity"
+          >
+            <span class="product__btn" (click)="decreaseQuantity(product.id)"
+              >-</span
+            >
+            <p class="product__quantity mb-0">{{ product.quantity }}</p>
+            <span class="product__btn" (click)="increaseQuantity(product.id)"
+              >+</span
+            >
+            <p class="product__unitprice mb-0">x Rs {{ product.price }}</p>
+          </div>
+        </div>
+        <div aria-label="product price">
+          <p class="product__totalprice">Rs {{ product.totalPrice }}</p>
+        </div>
+      </div>
+    </div>
+    <section aria-label="subtotal" class="d-flex justify-content-center mt-4">
+      <div class="col-lg-8 checkout text-center">
+        <p>Promo code can be applied on payment page</p>
+        <div matRipple 
+          class="subtotal d-flex justify-content-between align-items-center p-2"
+        >
+          <p class="mb-0">Proceed To Checkout</p>
+          <p class="mb-0">Rs {{ subtotal }}</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="container-sm" [hidden]="cart?.length > 0">
+  <section class="empty-cart">
+    <div>
+      <h4>No Items in your cart</h4>
+      <p class="mt-2">Your favourite items are just a click away.</p>
+      <div class="mt-4">
+        <button
+          type="button"
+          class="w-100"
+          aria-label="go to home page"
+          mat-raised-button
+          [routerLink]="['/app/home']"
+          color="primary"
+        >
+          Start Shopping
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
