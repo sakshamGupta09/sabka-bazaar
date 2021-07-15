@@ -38,6 +38,10 @@ const appRoutes: Routes = [
         loadChildren: () =>
           import('../cart/cart.module').then((m) => m.CartModule),
       },
+      {
+        path: '',
+        redirectTo: 'home',
+      },
     ],
   },
 ];
