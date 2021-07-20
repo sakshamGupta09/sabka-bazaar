@@ -1,3 +1,4 @@
+@import "src/assets/css/breakpoints";
 .h100 {
   height: 100vh !important;
 }
@@ -17,9 +18,7 @@
 .success-toast {
   background-color: #4caf50;
 }
-.mt-sm {
-  margin-top: 3rem;
-}
+
 .pointer {
   cursor: pointer;
 }
@@ -27,4 +26,9 @@ select {
   width: 100%;
   padding: 8px 0;
   outline: none;
+}
+.container {
+  @media only screen and (max-width: $mobile) {
+    padding: 0 !important;
+  }
 }

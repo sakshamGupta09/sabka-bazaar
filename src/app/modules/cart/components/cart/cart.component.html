@@ -1,4 +1,4 @@
-<div class="container-sm" [hidden]="cart?.length == 0">
+<div class="container" [hidden]="cart?.length == 0">
   <div class="cart__title">
     <h5>My Cart ( {{ cart.length }} items )</h5>
   </div>
@@ -37,10 +37,14 @@
         </div>
       </div>
     </div>
-    <section aria-label="subtotal" class="d-flex justify-content-center mt-4">
-      <div class="col-lg-8 checkout text-center">
+    <section
+      aria-label="subtotal"
+      class="checkout__box d-flex justify-content-center mt-4"
+    >
+      <div class="col-12 col-lg-8 checkout text-center">
         <p>Promo code can be applied on payment page</p>
-        <div matRipple 
+        <div
+          matRipple
           class="subtotal d-flex justify-content-between align-items-center p-2"
         >
           <p class="mb-0">Proceed To Checkout</p>
@@ -50,7 +54,7 @@
     </section>
   </div>
 </div>
-<div class="container-sm" [hidden]="cart?.length > 0">
+<div class="container" [hidden]="cart?.length > 0">
   <section class="empty-cart">
     <div>
       <h4>No Items in your cart</h4>

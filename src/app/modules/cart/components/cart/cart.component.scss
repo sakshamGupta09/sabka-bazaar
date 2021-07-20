@@ -41,6 +41,14 @@
 .checkout {
   padding: 1rem;
   box-shadow: var(--shadow);
+  background-color: var(--color-white);
+  &__box {
+    @media only screen and (max-width: $mobile) {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  }
 }
 .subtotal {
   background-color: var(--color-theme);

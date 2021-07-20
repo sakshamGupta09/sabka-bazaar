@@ -1,4 +1,9 @@
+@import "src/assets/css/breakpoints";
 .footer {
   padding: 10px;
   background-color: var(--color-grey);
+
+  @media only screen and (max-width: $mobile) {
+    display: none;
+  }
 }
