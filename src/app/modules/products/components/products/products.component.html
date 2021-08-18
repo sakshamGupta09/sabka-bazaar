@@ -1,11 +1,10 @@
-<section aria-label="Products section">
-  <div class="row">
-    <div
-      class="col-md-6 col-lg-4"
-      *ngFor="let product of products; let i = index; trackBy: productTracker"
-    >
-      <div class="product mt-2" aria-label="product view">
-        <h5 class="product__title">{{ product.name }}</h5>
+<div class="products">
+  <ng-container
+    *ngFor="let product of products; let i = index; trackBy: productTracker"
+  >
+    <div class="product" aria-label="product view">
+      <h5 class="product__title">{{ product.name }}</h5>
+      <figure class="product__imgbox">
         <img
           [src]="product.imageURL"
           [alt]="product.description"
@@ -13,23 +12,19 @@
           width="100%"
           loading="lazy"
         />
-        <p class="product__description ellipsis">{{ product.description }}</p>
-        <div class="d-flex align-items-center mt-2">
-          <p class="product__price flex-grow-1 mb-0">
-            MRP Rs {{ product.price }}
-          </p>
-          <button
-            type="button"
-            class="flex-grow-1"
-            aria-label="add product to cart"
-            mat-raised-button
-            color="primary"
-            (click)="addToCart(product)"
-          >
-            Buy Now
-          </button>
-        </div>
-      </div>
+      </figure>
+      <p class="product__description ellipsis">{{ product.description }}</p>
+      <p class="product__price mb-0">MRP Rs {{ product.price }}</p>
+      <button
+        type="button"
+        class="flex-grow-1"
+        aria-label="add product to cart"
+        mat-raised-button
+        color="primary"
+        (click)="addToCart(product)"
+      >
+        Buy Now
+      </button>
     </div>
-  </div>
-</section>
+  </ng-container>
+</div>

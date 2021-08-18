@@ -1,10 +1,13 @@
 @import "src/assets/css/breakpoints";
-.products {
-  &__content {
+.catalogue {
+  @media only screen and (min-width: $mobile) {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    grid-column-gap: 1.5rem;
+  }
+
+  &__categories {
     @media only screen and (min-width: $mobile) {
-      position: sticky;
-      height: calc(100vh - 200px);
-      top: 130px;
       background-color: var(--color-grey);
     }
   }

@@ -1,19 +1,34 @@
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-gap: 1rem;
+}
 .product {
   box-shadow: var(--shadow);
   border-bottom: 1px dashed var(--color-theme);
   padding: 10px;
   overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 
   &__title {
     min-height: 56px;
+    grid-column: 1 / -1;
+  }
+  &__imgbox {
+    grid-column: 1 / -1;
   }
   &__img {
     height: 40vh;
     object-fit: contain;
   }
   &__description {
+    grid-column: 1 / -1;
     padding: 5px;
     background-color: var(--color-grey);
+  }
+  &__price {
+    align-self: center;
   }
 }
 .ellipsis {

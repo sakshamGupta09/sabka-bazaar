@@ -1,10 +1,27 @@
+@import "~src/assets/css/breakpoints";
 .login {
   &__heading {
     font-size: 2rem;
     font-weight: bold;
   }
-  &__text{
-      font-size: 1rem;
-      font-weight: 500;
+  &__para {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  @media only screen and (min-width: $tablet) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    &__text {
+      justify-self: center;
+    }
+  }
+
+  @media only screen and (min-width: $desktop) {
+    &__content {
+      form {
+        width: 70%;
+      }
+    }
   }
 }
