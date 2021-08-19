@@ -7,6 +7,6 @@ export interface IProduct {
   price: number;
   sku: string;
   stock: number;
-  quantity: number;
-  totalPrice: number;
+  quantity?: number;
+  totalPrice?: number;
 }
